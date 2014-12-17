@@ -6,7 +6,7 @@ function depends_sdl2() {
     # These packages are listed in SDL2's "README-raspberrypi.txt" file as build dependencies.
     # If libudev-dev is not installed before compiling, the keyboard will mysteriously not work!
     # The rest should already be installed, but just to be safe, include them all.
-    checkNeededPackages libudev-dev libasound2-dev libdbus-1-dev libraspberrypi0 libraspberrypi-bin libraspberrypi-dev
+    checkNeededPackages libudev-dev libasound2-dev libdbus-1-dev #libraspberrypi0 libraspberrypi-bin libraspberrypi-dev
 }
 
 function sources_sdl2() {
@@ -14,11 +14,15 @@ function sources_sdl2() {
 }
 
 function build_sdl2() {
-    ./configure 
+    pushd "$rootdir/supplementary/SDL2-2.0.1" || return 1
+    ./configure || return 1
     make clean
-    make
+    make || return 1
+    popd
 }
 
 function install_sdl2() {
-    make install
+    pushd "$rootdir/supplementary/SDL2-2.0.1" || return 1
+    make install || return 1
+    popd || return 1
 }
