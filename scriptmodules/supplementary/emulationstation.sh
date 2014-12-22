@@ -38,20 +38,21 @@ function install_emulationstation() {
 }
 
 function configure_emulationstation() {
-    cat > /usr/bin/emulationstation << _EOF_
-#!/bin/bash
+    ln -s "$md_inst/emulationstation" /usr/local/bin/
+    # cat > /usr/bin/emulationstation << _EOF_
+# #!/bin/bash
 
 es_bin="$md_inst/emulationstation"
 
-nb_lock_files=\$(find /tmp -name ".X?-lock" | wc -l)
-if [ \$nb_lock_files -ne 0 ]; then
-    echo "X is running. Please shut down X in order to mitigate problems with loosing keyboard input. For example, logout from LXDE."
-    exit 1
-fi
+# nb_lock_files=\$(find /tmp -name ".X?-lock" | wc -l)
+# if [ \$nb_lock_files -ne 0 ]; then
+    # echo "X is running. Please shut down X in order to mitigate problems with loosing keyboard input. For example, logout from LXDE."
+    # exit 1
+# fi
 
-\$es_bin "\$@"
-_EOF_
-    chmod +x /usr/bin/emulationstation
+# \$es_bin "\$@"
+# _EOF_
+    # chmod +x /usr/bin/emulationstation
 
     # make sure that ES has enough GPU memory
     ensureKeyValueBootconfig "gpu_mem_256" 128 "/boot/config.txt"
