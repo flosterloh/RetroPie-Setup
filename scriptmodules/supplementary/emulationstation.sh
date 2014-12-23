@@ -6,7 +6,7 @@ function depends_emulationstation() {
     checkNeededPackages \
         libboost-locale-dev libboost-system-dev libboost-filesystem-dev libboost-date-time-dev \
         libfreeimage-dev libfreetype6-dev libeigen3-dev libcurl4-openssl-dev \
-        libasound2-dev cmake g++-4.7
+        libasound2-dev cmake g++-4.7 freeglut3-dev libgles1-mesa-dev
 
     # rp_callModule "sdl2binaries"
     rp_callModule "sdl2"
@@ -18,11 +18,9 @@ function sources_emulationstation() {
 }
 
 function build_emulationstation() {
-    rpSwap on 512
-    cmake .
-    make clean
+    cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.7 -DGLSystem=OpenGL\ ES -DOPENGLES_INCLUDE_DIR=/usr/include/GLES . || return 1
     make
-    rpSwap off
+    # rpSwap off
     md_ret_require="$md_build/emulationstation"
 }
 
