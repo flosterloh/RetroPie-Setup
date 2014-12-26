@@ -15,9 +15,16 @@ function sources_retroarch() {
 }
 
 function build_retroarch() {
-    ./configure --prefix="$md_inst" --disable-x11 --disable-oss --disable-pulse --enable-floathard
+    ./configure \
+      --prefix="$md_inst" \
+      --disable-x11 \
+      --disable-oss \
+      --disable-pulse \
+      --enable-floathard \
+      --enable-neon || return 1
+
     make clean
-    make
+    make || return 1
     md_ret_require="$md_build/retroarch"
 }
 
