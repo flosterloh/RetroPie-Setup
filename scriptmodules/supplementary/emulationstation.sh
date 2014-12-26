@@ -18,7 +18,13 @@ function sources_emulationstation() {
 }
 
 function build_emulationstation() {
-    cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.7 -DGLSystem=OpenGL\ ES -DOPENGLES_INCLUDE_DIR=/usr/include/GLES . || return 1
+    # EmulationStation
+    cmake \
+      -DOPENGL_INCLUDE_DIR=/usr/include/GL \
+      -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.7 \
+      -DGLSystem="OpenGL ES" \
+      -DOPENGLES_INCLUDE_DIR=/usr/include/GLES3 . \
+      || return 1
     make
     # rpSwap off
     md_ret_require="$md_build/emulationstation"
