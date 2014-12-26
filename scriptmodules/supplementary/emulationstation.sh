@@ -46,7 +46,7 @@ function configure_emulationstation() {
     # cat > /usr/bin/emulationstation << _EOF_
 # #!/bin/bash
 
-es_bin="$md_inst/emulationstation"
+#es_bin="$md_inst/emulationstation"
 
 # nb_lock_files=\$(find /tmp -name ".X?-lock" | wc -l)
 # if [ \$nb_lock_files -ne 0 ]; then
