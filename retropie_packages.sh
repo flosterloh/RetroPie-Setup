@@ -44,9 +44,9 @@ __INFMSGS=""
 __memory_phys=$(free -m | awk '/^Mem:/{print $2}')
 __memory_total=$(free -m -t | awk '/^Total:/{print $2}')
 
-__default_cflags="-O2 -pipe -mfpu=neon -march=armv7 -mfloat-abi=hard"
 # -pipe is faster but will use more memory - so let's only add it if we have more thans 256M free ram.
 [ $__memory_phys -ge 256 ] && __default_cflags+=" -pipe"
+__default_cflags="-O2 -pipe -mfpu=neon -march=armv7-a -mfloat-abi=hard"
 __default_asflags=""
 __default_makeflags=""
 __default_gcc_version="4.7"
