@@ -19,9 +19,20 @@ function build_retroarch() {
       --prefix="$md_inst" \
       --disable-x11 \
       --disable-oss \
+      --enable-neon \
+      --enable-udev \
+      --disable-ffmpeg \
+      --enable-gles \
+      --disable-kms \
+      --disable-vg \
+      --enable-exynos \
       --disable-pulse \
+      --disable-xvideo \
+      --disable-sdl \
+      --enable-gles3 \
+      --enable-fbo \
       --enable-floathard \
-      --enable-neon || return 1
+        || return 1
 
     make clean
     make || return 1
@@ -159,5 +170,10 @@ function configure_retroarch() {
     ensureKeyValue "input_autodetect_enable" "true" "$configdir/all/retroarch.cfg"
     ensureKeyValue "joypad_autoconfig_dir" "$md_inst/configs/" "$configdir/all/retroarch.cfg"
 
+<<<<<<< HEAD
     chown $user:$user -R "$configdir"
+=======
+    chown $user:$user -R "$rootdir/emulators/RetroArch/shader/"
+    chown $user:$user -R "$rootdir/configs/"
+>>>>>>> I think I got the config options for retroarch
 }
