@@ -22,7 +22,6 @@ function build_emulationstation() {
     cmake \
       -DOPENGL_INCLUDE_DIR=/usr/include/GL \
       -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.7 \
-      -DGLSystem="OpenGL ES" \
       -DOPENGLES_INCLUDE_DIR=/usr/include/GLES3 . \
       || return 1
     make
