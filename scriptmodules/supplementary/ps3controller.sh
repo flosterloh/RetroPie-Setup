@@ -42,6 +42,20 @@ function configure_ps3controller() {
         dialog --backtitle "$__backtitle" --msgbox "Cannot find the PS3 controller via USB-connection. Please try to (re-)connect it and try again." 22 76
         break
     fi
+    popd
+
+    pushd $rootdir/supplementary/
+    wget -O QtSixA.tar.gz http://sourceforge.net/projects/qtsixa/files/QtSixA%201.5.1/QtSixA-1.5.1-src.tar.gz
+    tar xfvz QtSixA.tar.gz
+    cd QtSixA-1.5.1/sixad
+    make CXX="/usr/bin/g++-4.7" CXXFLAGS="-include unistd.h" \
+      || return 1
+    mkdir -p /var/lib/sixad/profiles
+    checkinstall -y
+    update-rc.d sixad defaults
+    rm QtSixA.tar.gz
+    popd
 
     dialog --backtitle "$__backtitle" --msgbox "The driver and configuration tools for connecting PS3 controllers have been installed. Please visit https://github.com/petrockblog/RetroPie-Setup/wiki/Setting-up-a-PS3-controller for further information." 22 76
 }
+
