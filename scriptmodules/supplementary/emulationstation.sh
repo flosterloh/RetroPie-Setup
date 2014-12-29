@@ -14,7 +14,9 @@ function depends_emulationstation() {
 
 function sources_emulationstation() {
     gitPullOrClone "$md_build" "https://github.com/Aloshi/EmulationStation" NS
+    pushd "$md_build"
     git checkout unstable || return 1
+    popd
 }
 
 function build_emulationstation() {
