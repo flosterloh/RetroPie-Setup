@@ -170,10 +170,5 @@ function configure_retroarch() {
     ensureKeyValue "input_autodetect_enable" "true" "$configdir/all/retroarch.cfg"
     ensureKeyValue "joypad_autoconfig_dir" "$md_inst/configs/" "$configdir/all/retroarch.cfg"
 
-<<<<<<< HEAD
     chown $user:$user -R "$configdir"
-=======
-    chown $user:$user -R "$rootdir/emulators/RetroArch/shader/"
-    chown $user:$user -R "$rootdir/configs/"
->>>>>>> I think I got the config options for retroarch
 }
