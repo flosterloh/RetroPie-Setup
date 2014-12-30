@@ -21,6 +21,7 @@ function build_retroarch() {
       --disable-oss \
       --enable-neon \
       --enable-udev \
+      --enable-egl \
       --disable-ffmpeg \
       --enable-gles \
       --disable-kms \
