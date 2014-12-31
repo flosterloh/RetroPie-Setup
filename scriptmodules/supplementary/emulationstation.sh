@@ -14,12 +14,10 @@ function depends_emulationstation() {
 
 function sources_emulationstation() {
     gitPullOrClone "$md_build" "https://github.com/Aloshi/EmulationStation" NS
-    pushd "$md_build"
-    git checkout unstable || return 1
-    popd
 }
 
 function build_emulationstation() {
+    git checkout origin/unstable
     # EmulationStation
     cmake \
       -DOPENGL_INCLUDE_DIR=/usr/include/GL \
