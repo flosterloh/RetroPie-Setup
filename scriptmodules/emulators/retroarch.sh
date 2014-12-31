@@ -17,8 +17,10 @@ function sources_retroarch() {
 function build_retroarch() {
     ./configure \
       --prefix="$md_inst" \
-      --disable-x11 \
-      --disable-oss \
+      --enable-x11 \
+      --enable-al \
+      --enable-alsa \
+      --enable-oss \
       --enable-neon \
       --enable-udev \
       --enable-egl \
@@ -27,9 +29,9 @@ function build_retroarch() {
       --disable-kms \
       --disable-vg \
       --enable-exynos \
-      --disable-pulse \
-      --disable-xvideo \
-      --disable-sdl \
+      --enable-pulse \
+      --enable-xvideo \
+      --enable-sdl \
       --enable-gles3 \
       --enable-fbo \
       --enable-floathard \
