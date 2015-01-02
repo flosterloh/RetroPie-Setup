@@ -14,15 +14,11 @@ function sources_sdl2() {
 }
 
 function build_sdl2() {
-    pushd "$rootdir/supplementary/SDL2-2.0.1" || return 1
-    ./configure || return 1
+    ./configure
     make clean
-    make || return 1
-    popd
+    make
 }
 
 function install_sdl2() {
-    pushd "$rootdir/supplementary/SDL2-2.0.1" || return 1
-    make install || return 1
-    popd || return 1
+    make install
 }
