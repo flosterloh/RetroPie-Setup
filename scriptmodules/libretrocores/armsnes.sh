@@ -3,12 +3,11 @@ rp_module_desc="SNES LibretroCore ARMSNES"
 rp_module_menus="4+"
 
 function sources_armsnes() {
-    gitPullOrClone "$md_build" git://github.com/spikegrobstein/ARMSNES-libretro.git NS
+    gitPullOrClone "$md_build" git://github.com/rmaz/ARMSNES-libretro
     patch -N -i $scriptdir/supplementary/pocketsnesmultip.patch src/ppu.cpp
 }
 
 function build_armsnes() {
-    git checkout armv7-compile
     make clean
     make
     md_ret_require="$md_build/libpocketsnes.so"
