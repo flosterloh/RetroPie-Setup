@@ -22,8 +22,8 @@ function build_emulationstation() {
     cmake \
       -DOPENGL_INCLUDE_DIR=/usr/include/GL \
       -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.7 \
-      -DOPENGLES_INCLUDE_DIR=/usr/include/GLES3 . \
-      || return 1
+      -DOPENGLES_INCLUDE_DIR=/usr/include/GLES3 \
+      .
     make
     # rpSwap off
     md_ret_require="$md_build/emulationstation"
