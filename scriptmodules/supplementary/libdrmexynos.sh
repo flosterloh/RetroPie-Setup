@@ -11,6 +11,7 @@ function build_libdrmexynos() {
   ./autogen.sh
   ./configure --enable-exynos-experimental-api
   make
+  ldconfig # tell the system to update it's internal cache of libraries
   md_ret_require="$md_build/exynos/.libs/libdrm_exynos.so"
 }
 
