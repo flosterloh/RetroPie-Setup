@@ -7,10 +7,8 @@ function sources_mupen64plus() {
 }
 
 function build_mupen64plus() {
-    rpSwap on 750
     make clean
-    make platform=rpi
-    rpSwap off
+    make platform=armv7-gles-neon-hardfloat
     md_ret_require="$md_build/mupen64plus_libretro.so"
 }
 
