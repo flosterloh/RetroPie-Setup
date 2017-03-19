@@ -49,7 +49,7 @@ __memory_total=$(free -m -t | awk '/^Total:/{print $2}')
 __default_cflags="-O2 -pipe -mtune=cortex-a7 -mfpu=neon-vfpv4  -ffast-math -march=armv7-a -mfloat-abi=hard -marm"
 __default_asflags=""
 __default_makeflags=""
-__default_gcc_version="4.7"
+__default_gcc_version="4.9"
 
 [[ -z "${CFLAGS}"        ]] && export CFLAGS="${__default_cflags}"
 [[ -z "${CXXFLAGS}" ]] && export CXXFLAGS="${__default_cflags}"
